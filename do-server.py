@@ -23,7 +23,7 @@ class SimpleHandler(http.server.BaseHTTPRequestHandler):
 		self.wfile.close()
 
 try:
-	server = http.server.HTTPServer(('localhost',PORT),SimpleHandler)
+	server = http.server.HTTPServer(('::',PORT),SimpleHandler)
 	print('Started http server')
 	server.serve_forever()
 except KeyboardInterrupt:
