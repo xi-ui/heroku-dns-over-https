@@ -18,7 +18,7 @@ class SimpleHandler(http.server.BaseHTTPRequestHandler):
 		self.wfile.write("<body><p>This is a test.</p>".encode("utf-8"))
 		# If someone went to "http://something.somewhere.net/foo/bar/",
 		# then s.path equals "/foo/bar/".
-		self.wfile.write(bytes("<p>You accessed path: %s</p>" % self.path))
+		self.wfile.write(("<p>You accessed path: %s</p>" % self.path).encode("utf-8"))
 		self.wfile.write("</body></html>".encode("utf-8"))
 		self.wfile.close()
 
