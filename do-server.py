@@ -1,3 +1,4 @@
+import sys
 from http.server import HTTPServer, BaseHTTPRequestHandler
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 	def do_GET(self):
