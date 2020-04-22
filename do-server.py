@@ -2,7 +2,7 @@ import http.server
 import socketserver
 import sys
 
-PORT = sys.argv[1]
+PORT = int(sys.argv[1])
 
 class SimpleHandler(http.server.BaseHTTPRequestHandler):
 	def do_HEAD(self):
