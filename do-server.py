@@ -4,5 +4,5 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 		self.send_response(200)
 		self.end_headers()
 		self.wfile.write(b'Hello, world!')
-httpd = HTTPServer(('localhost', 8000), SimpleHTTPRequestHandler)
+httpd = HTTPServer(('localhost',sys.argv[0]), SimpleHTTPRequestHandler)
 httpd.serve_forever()
