@@ -1,12 +1,12 @@
 import http.server
 import socketserver
 import sys
-import re
 PORT = int(sys.argv[1])
 
 def handleDns(path):
 	path = path.split(".")
 	path[0] = ".".join(path[0].split("/")[::-1])
+	path = "\t".join(path)
 	return path
 
 class SimpleHandler(http.server.BaseHTTPRequestHandler):
