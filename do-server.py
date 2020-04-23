@@ -1,8 +1,13 @@
 import http.server
 import socketserver
 import sys
-
+import re
 PORT = int(sys.argv[1])
+
+def handleDns(path):
+	path = path.split(".")
+	path[0] = ".".join(path[0].split("/")[::-1])
+	return path
 
 class SimpleHandler(http.server.BaseHTTPRequestHandler):
 	def do_HEAD(self):
@@ -13,7 +18,7 @@ class SimpleHandler(http.server.BaseHTTPRequestHandler):
 		self.send_response(200)
 		self.send_header("Content-type", "text/plain")
 		self.end_headers()
-		self.wfile.write((self.path).encode("utf-8"))
+		self.wfile.write(handleDns(self.path).encode("utf-8"))
 		self.wfile.close()
 	def do_POST(self):
 		self.send_response(400)
