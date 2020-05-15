@@ -18,7 +18,7 @@ def handleDns(path):
 		qquery=query.q
 	elif hasattr(query,"Q"):
 		qquery=query.Q
-	qclass,query=qclass.upper(),qquery.upper()
+	qclass,qquery=qclass.upper(),qquery.upper()
 	return path+"\t"+qclass+"\t"+qquery
 
 class SimpleHandler(http.server.BaseHTTPRequestHandler):
