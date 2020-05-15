@@ -7,7 +7,7 @@ def handleDns(path):
 	path = path.split("?",2)
 	#path[0] = ".".join(path[0].split("/")[::-1])
 	#path = "\t".join(path)
-	return path
+	return path[0]+" / "+path[1]
 
 class SimpleHandler(http.server.BaseHTTPRequestHandler):
 	def do_HEAD(self):
