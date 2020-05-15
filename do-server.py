@@ -2,7 +2,7 @@ import http.server
 import socketserver
 import sys
 from urllib.parse import urlparse
-from urllib.parse import parse_qsl
+from urllib.parse import parse_qs
 PORT = int(sys.argv[1])
 
 def handleDns(path):
