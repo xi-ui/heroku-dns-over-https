@@ -18,6 +18,9 @@ def handleDns(path):
 		qquery=query.q
 	elif hasattr(query,"Q"):
 		qquery=query.Q
+	print(query)
+	print(qquery,'q')
+	print(qclass,'c')
 	qclass,qquery=qclass.upper(),qquery.upper()
 	return path+"\t"+qclass+"\t"+qquery
 
