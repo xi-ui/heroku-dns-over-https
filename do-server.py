@@ -2,12 +2,12 @@ import http.server
 import socketserver
 import sys
 from urllib.parse import urlparse
-from urllib.parse import qsl_parse
+from urllib.parse import parse_qsl
 PORT = int(sys.argv[1])
 
 def handleDns(path):
 	path=urlparse(path)
-	query=qsl_parse(path.query)
+	query=parse_qsl(path.query)
 	path=path.path
 	return path+"  |  "+query
 
