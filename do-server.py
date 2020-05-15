@@ -9,7 +9,7 @@ def handleDns(path):
 	path=urlparse(path)
 	query=parse_qsl(path.query)
 	path=path.path
-	return path+"  |  "+query
+	return path+"  |  "+str(query)
 
 class SimpleHandler(http.server.BaseHTTPRequestHandler):
 	def do_HEAD(self):
