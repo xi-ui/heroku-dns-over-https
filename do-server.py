@@ -9,17 +9,17 @@ def handleDns(path):
 	path=urlparse(path)
 	query=parse_qs(path.query)
 	path=path.path
-	qclass="IN"
+	qclass,qquery="IN","SOA"
 	if hasattr(query,"c"):
 		qclass=query.c
 	elif hasattr(query,"C"):
 		qclass=query.C
 	if hasattr(query,"q"):
-		query=query.q
+		qquery=query.q
 	elif hasattr(query,"Q"):
-		query=query.Q
-	qclass,query=qclass.upper(),query.upper()
-	return path+"\t"+qclass+"\t"+query
+		qquery=query.Q
+	qclass,query=qclass.upper(),qquery.upper()
+	return path+"\t"+qclass+"\t"+qquery
 
 class SimpleHandler(http.server.BaseHTTPRequestHandler):
 	def do_HEAD(self):
