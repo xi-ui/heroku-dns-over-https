@@ -7,9 +7,9 @@ PORT = int(sys.argv[1])
 
 def handleDns(path):
 	path=urlparse(path)
-	query=parse_qsl(path.query)
+	query=parse_qs(path.query)
 	path=path.path
-	return path+"  |  "+str(query)
+	return path+"\t"+query.c.upper()+"\t"+query.q.upper()
 
 class SimpleHandler(http.server.BaseHTTPRequestHandler):
 	def do_HEAD(self):
