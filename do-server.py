@@ -5,9 +5,24 @@ PORT = int(sys.argv[1])
 
 def handleDns(path):
 	path = path.split("?",2)
-	#path[0] = ".".join(path[0].split("/")[::-1])
-	#path = "\t".join(path)
-	return path[0]+" / "+path[1]
+	path[0] = ".".join(path[0].split("/")[::-1])
+	path[1] = path[1].split("&",2)
+	path[1][0] = path[1][0].split("=",2)
+	path[1][1] = path[1][1].split("=",2)
+	path[1][0][1] = path[1][0][1].upper()
+	path[1][1][1] = path[1][1][1].upper()
+	path[1][0][0] = path[1][0][0].lower()
+	path[1][1][0] = path[1][1][0].lower()
+	dnsq,dnsclass="SOA","IN"
+	if path[1][0][0] == "c":
+		dnsclass=path[1][0][1]
+		if path[1][1][0] == "q":
+			dnsq=path[1][1][1]
+	elif path[1][1][0] == "c":
+		dnsclass=path[1][1][1]
+		if path[1][0][0] == "q":
+			dnsq=path[1][0][1]
+	return path[0]+"\t"+dnsclass+"\t"+dnsq
 
 class SimpleHandler(http.server.BaseHTTPRequestHandler):
 	def do_HEAD(self):
