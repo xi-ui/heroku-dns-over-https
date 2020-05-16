@@ -10,14 +10,10 @@ def handleDns(path):
 	query=parse_qs(path.query)
 	path=path.path
 	qclass,qquery="IN","SOA"
-	if hasattr(query,"c"):
-		qclass=query['c']
-	elif hasattr(query,"C"):
-		qclass=query['C']
-	if hasattr(query,"q"):
-		qquery=query['q']
-	elif hasattr(query,"Q"):
-		qquery=query['Q']
+	qclass=query.get('c',qclass)
+	qclass=query.get('C',qclass)
+	qquery=query.get('q',qquery)
+	qquery=query.get('Q',qquery)
 	print(query)
 	print(qquery,'q')
 	print(qclass,'c')
